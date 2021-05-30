@@ -11,8 +11,8 @@
     <color name="blue">#2196f3</color>
     <color name="red">#f44336</color>
     <color name="green">#4caf50</color>
-    <color name="card1">#C8FDD835</color>
-    <color name="card2">#7EF6FD35</color>
+    <color name="card1">#9C4CE415</color>
+    <color name="card2">#92FDD835</color>
     <color name="card3">#9EF4511E</color>
     <color name="power">#000000</color>
 </resources>
