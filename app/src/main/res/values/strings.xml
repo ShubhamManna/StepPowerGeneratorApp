@@ -17,7 +17,7 @@
     <string name="total_steps">Total steps:</string>
     <string name="from_that">from that…</string>
     <string name="walking_steps">Walking:</string>
-    <string name="jogging_steps">Jogging / Fast walking:</string>
+    <string name="jogging_steps">Jogging:</string>
     <string name="running_steps">Running:</string>
     <string name="total_distance">Total distance:</string>
     <string name="average_speed">Average speed:</string>
@@ -40,4 +40,6 @@
     <string name="min_range">min. range:</string>
     <string name="accuracy">Accuracy:</string>
     <string name="delay">Delay:</string>
+    <string name="power_text">You generated a total power of </string>
+    <string name="copyright">© S_Manna</string>
 </resources>

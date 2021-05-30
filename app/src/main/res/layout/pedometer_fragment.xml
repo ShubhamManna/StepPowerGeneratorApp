@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="8dp"
+
                 app:cardElevation="0dp">
                 <LinearLayout
                     android:orientation="vertical"
@@ -35,11 +36,12 @@
                         android:textSize="20sp"
                         android:text="@string/pedometer"
                         android:layout_width="wrap_content"
+                        android:textColor="@color/power"
                         android:layout_height="wrap_content"/>
 
                     <View
                         android:layout_marginTop="8dp"
-                        android:background="@color/colorBackground"
+                        android:background="@color/colorBar"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"/>
 
@@ -141,16 +143,77 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:layout_margin="16dp"
-                    android:textAlignment="center"
-                    android:text="Pair with my Smart Shoe"
-                    android:textSize="20sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Pair with my Smart Shoe"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
 
 
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:FontWeight="700"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/card3">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="@string/power_generated"
+                            android:textColor="@color/power"
+                            android:textSize="23sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <View
+                        android:layout_marginTop="8dp"
+                        android:background="@color/colorBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/power_text"
+                            android:textAllCaps="true"
+                            android:textColor="@color/power"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/textview_results_power_generated"
+                            android:textSize="18sp"
+                            android:maxLines="3"
+                            android:ellipsize="end"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="4dp"
+                            android:textColor="@color/power"
+                            android:text="0 Watts"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -174,6 +237,7 @@
                         <TextView
                             android:textSize="20sp"
                             android:text="@string/results"
+                            android:textColor="@color/power"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
@@ -270,6 +334,12 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="18sp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/running_steps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/textview_results_running_steps"
@@ -343,26 +413,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="18sp"
-                            android:layout_marginEnd="16dp"
-                            android:text="@string/power_generated"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <TextView
-                            android:id="@+id/textview_results_power_generated"
-                            android:textSize="18sp"
-                            android:textAlignment="textEnd"
-                            android:maxLines="3"
-                            android:ellipsize="end"
-                            android:text="0"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -370,9 +420,16 @@
 
             <TextView
                 android:layout_gravity="center"
-                android:layout_margin="16dp"
+                android:layout_marginTop="16dp"
                 android:textSize="16sp"
                 android:text="@string/facharbeit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_margin="6dp"
+                android:textSize="12sp"
+                android:text="@string/copyright"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

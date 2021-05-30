@@ -38,31 +38,30 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     private TextView textView_amount_steps, textView_type_of_step,
             textView_pedometer_is_running, textView_pedometer_toggle_text;
 
-    // Ergebnisse - Textviews
+    // Results - text views
     private TextView textview_results_total_steps, textview_results_walking_steps, textview_results_jogging_steps, textview_results_running_steps,
             textview_results_total_distance, textview_results_average_speed, textview_results_burned_calories, textview_results_power_generated;
 
-    // ViewModel - speichert alle relevanten Daten hier. --> Gehen nicht verloren wenn
-    // das Fragment neu erstellt wird (Orientierung ändert sich; App im Hintergrund etc.)
+    // ViewModel - saves all relevant data here.
     private pedometerViewModel mViewModel;
 
     /**
-     * Returnt eine neue Instanz des SchrittzaehlerFragment's.
+     * Returns a new instance of the step counter fragment.
      *
-     * @return neue Instanz
+     * @return new instance
      */
     public static pedometerFragment newInstance() {
         return new pedometerFragment();
     }
 
     /**
-     * Wird bei Erstellung der Ansicht / GUI aufgerufen.
-     * Returnt die Ansicht
+     * Is called when the view / GUI is created.
+     * Returns the view
      *
      * @param inflater
      * @param container
      * @param savedInstanceState
-     * @return View - neu generiertes GUI
+     * @return View - newly generated GUI
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -120,7 +119,7 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Wird bei Erstellung des Fragments aufgerufen. Initialisiert das ViewModel.
+     * Is called when the fragment is created. Initializes the ViewModel.
      *
      * @param savedInstanceState
      */
@@ -131,7 +130,7 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Wird aufgerufen, bevor das Fragment zerstört wird.
+     * Called before the fragment is destroyed.
      */
     @Override
     public void onDetach() {
@@ -140,10 +139,10 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Wird aufgerufen, wenn sich Messwerte eines Sensors ändern.
-     * Da nur der Beschleunigungssensor registriert wird, kommen Werte nur von diesem.
+     * Is called when the measured values ​​of a sensor change.
+     * Since only the acceleration sensor is registered, values ​​only come from this.
      *
-     * @param sensorEvent SensorEvent mit allen neuen Messwerten, Zeitstempel und Urpsrung
+     * @param sensorEvent SensorEvent with all new measured values, time stamp and origin
      */
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -156,25 +155,25 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
         mViewModel.getAccelerationDataArrayList().add(newAccelerationData);
         mViewModel.getStepDetector().addAccelerationData(newAccelerationData);
 
-        // Vorherige Version (jetzt in StepDetector gehandhabt):
+        // Previous version (now handled in StepDetector):
         /*
-        // bei 200 Millisekunden Delay ca. 5 Sekunden
-        if(mViewModel.getAccelerationDataArrayList().size() >= 25){
-            sendDataArray();
-        }*/
+        // at 200 millisecond delay approx. 5 seconds
+        if (mViewModel.getAccelerationDataArrayList (). size ()> = 25) {
+            sendDataArray ();
+        } */
     }
 
-/*
+    /*
     private void sendDataArray(){
         mViewModel.getStepDetector().handleData(mViewModel.getAccelerationDataArrayList());
         mViewModel.getAccelerationDataArrayList().clear();
     }*/
 
     /**
-     * Wird aufgerufen, wenn sich die Genauigkeit des registrierten Sensors ändert.
+     * Called when the accuracy of the registered sensor changes.
      *
-     * @param sensor Sensor, von dem sich die Genauigkeit geändert hat.
-     * @param i      neue Genauigkeit
+     * @param sensor Sensor of which the accuracy has changed.
+     * @param i new accuracy
      */
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
@@ -182,10 +181,10 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Wird aufgerufen, wenn im StepDetector ein Schritt erkannt wurde. Speichert Schritt im ViewModel.
+     * Is called when a step has been recognized in the StepDetector. Saves the step in the ViewModel.
      *
-     * @param accelerationData AccelerationData: Ein Datensatz des Beschleunigungssensors, welcher für einen Schritt steht.
-     * @param stepType         Enum StepType: Eine der drei Schritttypen aus dem Enum StepType.
+     * @param accelerationData AccelerationData: A data record of the acceleration sensor, which stands for a step.
+     * @param stepType Enum StepType: One of the three step types from the Enum StepType.
      */
     @Override
     public void step(AccelerationData accelerationData, StepType stepType) {
@@ -205,8 +204,8 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Berechnet Ergebnisse der letzten Messung. Nur Schätzungen.
-     * Werden in der GUI angezeigt.
+     * Calculates results of the last measurement. Estimates only.
+     * Are shown in the GUI.
      */
     private void calculateResults() {
         int totalSteps = mViewModel.getAmountOfSteps();
@@ -237,18 +236,18 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
         textview_results_average_speed.setText(averageSpeed);
 
         // Calories
-        float totalCaloriesBurned = walkingSteps + 0.05f + joggingSteps * 0.1f + runningSteps * 0.2f;
+        float totalCaloriesBurned = walkingSteps * 0.05f + joggingSteps * 0.1f + runningSteps * 0.2f;
         String totalCalories = String.format(Locale.ENGLISH, "%.0f", totalCaloriesBurned) + " Calories";
         textview_results_burned_calories.setText(totalCalories);
 
         //Power generated
-        float PowerGenerated = walkingSteps + 0.05f + joggingSteps * 0.1f + runningSteps * 0.2f;
+        float PowerGenerated = walkingSteps * 0.4542f + joggingSteps * 0.47f + runningSteps * 0.51f;
         String totalPower = String.format(Locale.ENGLISH, "%.0f", PowerGenerated) + "Watts";
         textview_results_power_generated.setText(totalPower);
     }
 
     /**
-     * Setzt einige Daten zurück.
+     * Resets some data.
      */
     private void resetUI() {
         mViewModel.setAmountOfSteps(0);
@@ -259,7 +258,8 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Startet Schrittsensor. (Fragment wird im SensorManager registriert)
+
+     * Starts step sensor. (The fragment is registered in the SensorManager)
      */
     private void startCounting() {
         if (!mViewModel.isCountingSteps()) {
@@ -277,13 +277,13 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
     }
 
     /**
-     * Stoppt Schrittsensor. (Fragment wird im SensorManager unregistriert)
+     * Stops step sensor. (The fragment is not registered in the SensorManager)
      */
     private void stopCounting() {
         if (mViewModel.isCountingSteps()) {
             try {
-                // Letzten verbliebenen Daten werden ebenfalls verarbeitet
-                //sendDataArray();
+                // The last remaining data is also processed
+                // sendDataArray ();
 
                 mViewModel.getSensorManager().unregisterListener(this);
                 mViewModel.setCountingSteps(false);

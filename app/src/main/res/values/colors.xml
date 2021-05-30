@@ -5,11 +5,14 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorWhite">#4CAF50</color>
-    <color name="colorBackground">#00897B</color>
+    <color name="colorBackground">#CEBCECE5</color>
+    <color name="colorBar">#3498C8</color>
 
     <color name="blue">#2196f3</color>
     <color name="red">#f44336</color>
     <color name="green">#4caf50</color>
-    <color name="card1">#6B05C8B4</color>
+    <color name="card1">#C8FDD835</color>
     <color name="card2">#7EF6FD35</color>
+    <color name="card3">#9EF4511E</color>
+    <color name="power">#000000</color>
 </resources>
