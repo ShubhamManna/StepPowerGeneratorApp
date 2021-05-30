@@ -237,12 +237,12 @@ public class pedometerFragment extends Fragment implements SensorEventListener, 
 
         // Calories
         float totalCaloriesBurned = walkingSteps * 0.05f + joggingSteps * 0.1f + runningSteps * 0.2f;
-        String totalCalories = String.format(Locale.ENGLISH, "%.0f", totalCaloriesBurned) + " Calories";
+        String totalCalories = String.format(Locale.ENGLISH, "%.0f", totalCaloriesBurned) + " Cal";
         textview_results_burned_calories.setText(totalCalories);
 
         //Power generated
         float PowerGenerated = walkingSteps * 0.4542f + joggingSteps * 0.47f + runningSteps * 0.51f;
-        String totalPower = String.format(Locale.ENGLISH, "%.0f", PowerGenerated) + "Watts";
+        String totalPower = String.format(Locale.ENGLISH, "%.0f", PowerGenerated) + "W";
         textview_results_power_generated.setText(totalPower);
     }
 
