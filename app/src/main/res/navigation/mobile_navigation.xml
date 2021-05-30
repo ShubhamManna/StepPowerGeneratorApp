@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_pedometer"
         android:name="com.example.steppowergenerator.ui.pedometer.pedometerFragment"
-        android:label="Pedometer"
+        android:label="STEPS POWER GENERATOR"
         tools:layout="@layout/pedometer_fragment" />
 
 </navigation>
